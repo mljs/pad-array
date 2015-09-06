@@ -5,7 +5,7 @@
 [![David deps][david-image]][david-url]
 [![npm download][download-image]][download-url]
 
-Function to pads an array in Javascript
+Function to fill an array in Javascript
 
 This code is based in the MATLAB's code [padarray](http://www.mathworks.com/help/images/ref/padarray.html)
 
@@ -13,16 +13,40 @@ This code is based in the MATLAB's code [padarray](http://www.mathworks.com/help
 
 `npm install ml-pad-array`
 
-## Methods
- 
-### pad-array(data, [options])
+## pad-array(data, [options])
 
-Pads the array `data` given the current `options`.
+Pads the array `data` given the current options`.
 
 __Options__
-* padsize: 
-* padval: 
-* direction: 
+* padsize: Defines the number of fields that will be expanded. The default value is 1. The possible type values are:
+  * Number: If the value is just a number it will expand in all directions with that value.
+  * Array of numbers: It will expand in each direction given the values, for the array case the two values are `left and right` and for the matrix case are `left, up, right, down`
+* padval: Determine how to fill the values, if the value don't match with the next strings, the new values are going to be filled with that value. The default value is 0. The special strings are:
+  * `'circular'`: Pad with circular repetition of elements within the dimension.
+  * `'replicate'`: Pad by repeating border elements of array. In this case the `padsize` shouldn't be bigger than the dimensions.
+  * `'symmetric'`: Pad array with mirror reflections of itself. In this case the `padsize` shouldn't be bigger than the dimensions.
+
+## Examples
+
+```js
+var data = [1, 2, 3, 4];
+
+// default case
+var default_case = padArray(data);
+default_case === [0, 1, 2, 3, 4, 0];
+
+// circular case
+var circular_case = padArray(data, {padsize: 5, padval: 'circular'});
+circular_case === [4, 1, 2, 3, 4, 1, 2, 3, 4, 1, 2, 3, 4, 1];
+
+// replicate case
+var replicate_case = padArray(data, {padsize: 3, padval: 'replicate'});
+replicate_case === [1, 1, 1, 1, 2, 3, 4, 4, 4, 4];
+
+// symmetric case
+var symmetric_case = padArray(data, {padsize: 3, padval: 'symmetric'});
+symmetric_case === [3, 2, 1, 1, 2, 3, 4, 4, 3, 2];
+```
 
 ## Test
 

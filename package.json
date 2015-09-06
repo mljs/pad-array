@@ -1,7 +1,7 @@
 {
   "name": "ml-pad-array",
   "version": "0.0.0",
-  "description": "Function to pads an array in Javascript",
+  "description": "Function to fill an array in Javascript",
   "main": "src/index.js",
   "directories": {
     "lib": "src",
@@ -16,6 +16,7 @@
   },
   "keywords": [
     "pad",
+    "fill",
     "array",
     "utils"
   ],
