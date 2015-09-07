@@ -2,7 +2,6 @@
 
 [![NPM version][npm-image]][npm-url]
 [![build status][travis-image]][travis-url]
-[![David deps][david-image]][david-url]
 [![npm download][download-image]][download-url]
 
 Function to fill an array in Javascript
@@ -15,7 +14,7 @@ This code is based in the MATLAB's code [padarray](http://www.mathworks.com/help
 
 ## pad-array(data, [options])
 
-Pads the array `data` given the current options`.
+Pads the `data` array given the current options` (returns a new array).
 
 __Options__
 * padsize: Defines the number of fields that will be expanded. The default value is 1. The possible type values are:
@@ -67,7 +66,5 @@ $ npm test
 [npm-url]: https://npmjs.org/package/ml-pad-array
 [travis-image]: https://img.shields.io/travis/mljs/pad-array/master.svg?style=flat-square
 [travis-url]: https://travis-ci.org/mljs/pad-array
-[david-image]: https://img.shields.io/david/mljs/pad-array.svg?style=flat-square
-[david-url]: https://david-dm.org/mljs/pad-array
 [download-image]: https://img.shields.io/npm/dm/ml-pad-array.svg?style=flat-square
 [download-url]: https://npmjs.org/package/ml-pad-array
