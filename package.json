@@ -1,0 +1,37 @@
+{
+  "name": "ml-pad-array",
+  "version": "0.0.0",
+  "description": "Function to fill an array in Javascript",
+  "main": "src/index.js",
+  "directories": {
+    "lib": "src",
+    "test": "test"
+  },
+  "scripts": {
+    "test": "mocha --require should --reporter mocha-better-spec-reporter --recursive"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/mljs/pad-array"
+  },
+  "keywords": [
+    "pad",
+    "fill",
+    "array",
+    "utils"
+  ],
+  "author": {
+    "name": "Miguel Asencio",
+    "email": "maasencioh@gmail.com"
+  },
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/mljs/pad-array/issues"
+  },
+  "homepage": "https://github.com/mljs/pad-array",
+  "devDependencies": {
+    "mocha": "latest",
+    "mocha-better-spec-reporter": "latest",
+    "should": "latest"
+  }
+}
