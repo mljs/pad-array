@@ -14,7 +14,7 @@ This code is based in the MATLAB's code [padarray](http://www.mathworks.com/help
 
 ## pad-array(data, [options])
 
-Pads the `data` array given the current options` (returns a new array).
+Pads the `data` array given the current `options` (returns a new array).
 
 __Options__
 * padsize: Defines the number of fields that will be expanded. The default value is 1. The possible type values are:

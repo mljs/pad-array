@@ -17,10 +17,12 @@ function arrayCase(data, options) {
         options.padsize = [options.padsize, options.padsize];
 
     var ans = new Array(len + options.padsize[0] + options.padsize[1]);
+    var cond = len + options.padsize[0] + options.padsize[1];
+    var i;
 
     // circular option
     if (options.padval === 'circular') {
-        for (var i = 0; i < (len + options.padsize[0] + options.padsize[1]); i++) {
+        for (i = 0; i < cond; i++) {
             if (i < options.padsize[0])
                 ans[i] = data[((len - (options.padsize[0] % len)) + i) % len];
             else if (i < (options.padsize[0] + len))
@@ -34,13 +36,13 @@ function arrayCase(data, options) {
     else if (options.padval === 'replicate') {
         if ((options.padsize[0] > len) || (options.padsize[1] > len))
             throw new RangeError('expanded value should not be bigger than the data length');
-        for (var j = 0; j < (len + options.padsize[0] + options.padsize[1]); j++) {
-            if (j < options.padsize[0])
-                ans[j] = data[0];
-            else if (j < (options.padsize[0] + len))
-                ans[j] = data[j - options.padsize[0]];
+        for (i = 0; i < cond; i++) {
+            if (i < options.padsize[0])
+                ans[i] = data[0];
+            else if (i < (options.padsize[0] + len))
+                ans[i] = data[i - options.padsize[0]];
             else
-                ans[j] = data[len - 1];
+                ans[i] = data[len - 1];
         }
     }
 
@@ -48,25 +50,25 @@ function arrayCase(data, options) {
     else if (options.padval === 'symmetric') {
         if ((options.padsize[0] > len) || (options.padsize[1] > len))
             throw new RangeError('expanded value should not be bigger than the data length');
-        for (var k = 0; k < (len + options.padsize[0] + options.padsize[1]); k++) {
-            if (k < options.padsize[0])
-                ans[k] = data[options.padsize[0] - 1 - k];
-            else if (k < (options.padsize[0] + len))
-                ans[k] = data[k - options.padsize[0]];
+        for (i = 0; i < cond; i++) {
+            if (i < options.padsize[0])
+                ans[i] = data[options.padsize[0] - 1 - i];
+            else if (i < (options.padsize[0] + len))
+                ans[i] = data[i - options.padsize[0]];
             else
-                ans[k] = data[2*len + options.padsize[0] - k - 1];
+                ans[i] = data[2*len + options.padsize[0] - i - 1];
         }
     }
 
     // default option
     else {
-        for (var l = 0; l < (len + options.padsize[0] + options.padsize[1]); l++) {
-            if (l < options.padsize[0])
-                ans[l] = options.padval;
-            else if (l < (options.padsize[0] + len))
-                ans[l] = data[l - options.padsize[0]];
+        for (i = 0; i < cond; i++) {
+            if (i < options.padsize[0])
+                ans[i] = options.padval;
+            else if (i < (options.padsize[0] + len))
+                ans[i] = data[i - options.padsize[0]];
             else
-                ans[l] = options.padval;
+                ans[i] = options.padval;
         }
     }
 
@@ -97,12 +99,14 @@ function padArray (data, options) {
     options.padsize = options.padsize || defaultOptions.padsize;
     options.padval  = options.padval  || defaultOptions.padval;
 
-    if (data[0] === undefined)
-        throw new TypeError('data should be an array');
-    else if (data[0][0] === undefined)
-        return arrayCase(data, options);
+    if (Array.isArray(data)) {
+        if (Array.isArray(data[0]))
+            return matrixCase(data, options);
+        else
+            return arrayCase(data, options);
+    }
     else
-        return matrixCase(data, options);
+        throw new TypeError('data should be an array');
 }
 
 module.exports = padArray;
