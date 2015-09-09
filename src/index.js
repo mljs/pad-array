@@ -34,8 +34,6 @@ function arrayCase(data, options) {
 
     // replicate option
     else if (options.padval === 'replicate') {
-        if ((options.padsize[0] > len) || (options.padsize[1] > len))
-            throw new RangeError('expanded value should not be bigger than the data length');
         for (i = 0; i < cond; i++) {
             if (i < options.padsize[0])
                 ans[i] = data[0];
