@@ -22,8 +22,9 @@ __Options__
   * Array of numbers: It will expand in each direction given the values, for the array case the two values are `left and right` and for the matrix case are `left, up, right, down`
 * padval: Determine how to fill the values, if the value don't match with the next strings, the new values are going to be filled with that value. The default value is 0. The special strings are:
   * `'circular'`: Pad with circular repetition of elements within the dimension.
-  * `'replicate'`: Pad by repeating border elements of array. In this case the `padsize` shouldn't be bigger than the dimensions.
+  * `'replicate'`: Pad by repeating border elements of array.
   * `'symmetric'`: Pad array with mirror reflections of itself. In this case the `padsize` shouldn't be bigger than the dimensions.
+* output: Instead of creating a new array, the returned value should be in this variable.
 
 ## Examples
 

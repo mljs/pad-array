@@ -1,4 +1,10 @@
-0.0.0 / HEAD
+1.0.0 / HEAD
 ============
 
-* first release
+* Add `output` option, fixes #3 
+* Matrix implementation, fixes #1
+
+0.0.0
+============
+
+* Array only implementation
