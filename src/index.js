@@ -16,19 +16,26 @@ function arrayCase(data, options) {
     if (options.padsize[0] === undefined)
         options.padsize = [options.padsize, options.padsize];
 
-    var ans = new Array(len + options.padsize[0] + options.padsize[1]);
     var cond = len + options.padsize[0] + options.padsize[1];
+
+    if (options.output) {
+        if (options.output.length !== cond)
+            throw new RangeError('Wrong output size');
+    }
+    else
+        options.output = new Array(cond);
+
     var i;
 
     // circular option
     if (options.padval === 'circular') {
         for (i = 0; i < cond; i++) {
             if (i < options.padsize[0])
-                ans[i] = data[((len - (options.padsize[0] % len)) + i) % len];
+                options.output[i] = data[((len - (options.padsize[0] % len)) + i) % len];
             else if (i < (options.padsize[0] + len))
-                ans[i] = data[i - options.padsize[0]];
+                options.output[i] = data[i - options.padsize[0]];
             else
-                ans[i] = data[(i - options.padsize[0]) % len];
+                options.output[i] = data[(i - options.padsize[0]) % len];
         }
     }
 
@@ -36,11 +43,11 @@ function arrayCase(data, options) {
     else if (options.padval === 'replicate') {
         for (i = 0; i < cond; i++) {
             if (i < options.padsize[0])
-                ans[i] = data[0];
+                options.output[i] = data[0];
             else if (i < (options.padsize[0] + len))
-                ans[i] = data[i - options.padsize[0]];
+                options.output[i] = data[i - options.padsize[0]];
             else
-                ans[i] = data[len - 1];
+                options.output[i] = data[len - 1];
         }
     }
 
@@ -50,11 +57,11 @@ function arrayCase(data, options) {
             throw new RangeError('expanded value should not be bigger than the data length');
         for (i = 0; i < cond; i++) {
             if (i < options.padsize[0])
-                ans[i] = data[options.padsize[0] - 1 - i];
+                options.output[i] = data[options.padsize[0] - 1 - i];
             else if (i < (options.padsize[0] + len))
-                ans[i] = data[i - options.padsize[0]];
+                options.output[i] = data[i - options.padsize[0]];
             else
-                ans[i] = data[2*len + options.padsize[0] - i - 1];
+                options.output[i] = data[2*len + options.padsize[0] - i - 1];
         }
     }
 
@@ -62,15 +69,15 @@ function arrayCase(data, options) {
     else {
         for (i = 0; i < cond; i++) {
             if (i < options.padsize[0])
-                ans[i] = options.padval;
+                options.output[i] = options.padval;
             else if (i < (options.padsize[0] + len))
-                ans[i] = data[i - options.padsize[0]];
+                options.output[i] = data[i - options.padsize[0]];
             else
-                ans[i] = options.padval;
+                options.output[i] = options.padval;
         }
     }
 
-    return ans;
+    return options.output;
 }
 
 /**
