@@ -7,15 +7,14 @@ describe('Array test', function () {
     it('Default test', function () {
         var data = [1, 2, 3, 4];
         var model = padArray(data);
-        // model.should.equal([0, 1, 2, 3, 4, 0]);
-        model[0].should.equal(0);
+        model.should.eql([0, 1, 2, 3, 4, 0]);
     });
 
     it('Output option test', function () {
         var data = [1, 2, 3, 4];
         var model = new Array(6);
         padArray(data, {output: model});
-        model[0].should.equal(0);
+        model.should.eql([0, 1, 2, 3, 4, 0]);
     });
 
     it('Replicate test', function () {
@@ -25,7 +24,7 @@ describe('Array test', function () {
             value: 'replicate'
         };
         var model = padArray(data, options);
-        model[0].should.equal(1);
+        model.should.eql([1, 1, 1, 1, 2, 3, 4, 4, 4, 4]);
     });
 
     it('Circular test', function () {
@@ -35,7 +34,7 @@ describe('Array test', function () {
             value: 'circular'
         };
         var model = padArray(data, options);
-        model[0].should.equal(4);
+        model.should.eql([4, 1, 2, 3, 4, 1, 2, 3, 4, 1, 2, 3, 4, 1]);
     });
 
     it('Symmetric test', function () {
@@ -45,7 +44,7 @@ describe('Array test', function () {
             value: 'symmetric'
         };
         var model = padArray(data, options);
-        model[0].should.equal(3);
+        model.should.eql([3, 2, 1, 1, 2, 3, 4, 4, 3, 2]);
     });
 
     it('Numeric test', function () {
@@ -55,6 +54,6 @@ describe('Array test', function () {
             value: 8
         };
         var model = padArray(data, options);
-        model[0].should.equal(8);
+        model.should.eql([8, 8, 8, 1, 2, 3, 4, 8, 8, 8]);
     });
 });
