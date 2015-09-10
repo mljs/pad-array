@@ -21,8 +21,8 @@ describe('Array test', function () {
     it('Replicate test', function () {
         var data = [1, 2, 3, 4];
         var options = {
-            padsize: 3,
-            padval: 'replicate'
+            size: 3,
+            value: 'replicate'
         };
         var model = padArray(data, options);
         model[0].should.equal(1);
@@ -31,8 +31,8 @@ describe('Array test', function () {
     it('Circular test', function () {
         var data = [1, 2, 3, 4];
         var options = {
-            padsize: 5,
-            padval: 'circular'
+            size: 5,
+            value: 'circular'
         };
         var model = padArray(data, options);
         model[0].should.equal(4);
@@ -41,8 +41,8 @@ describe('Array test', function () {
     it('Symmetric test', function () {
         var data = [1, 2, 3, 4];
         var options = {
-            padsize: 3,
-            padval: 'symmetric'
+            size: 3,
+            value: 'symmetric'
         };
         var model = padArray(data, options);
         model[0].should.equal(3);
@@ -51,8 +51,8 @@ describe('Array test', function () {
     it('Numeric test', function () {
         var data = [1, 2, 3, 4];
         var options = {
-            padsize: 3,
-            padval: 8
+            size: 3,
+            value: 8
         };
         var model = padArray(data, options);
         model[0].should.equal(8);

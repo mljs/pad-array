@@ -33,5 +33,8 @@
     "mocha": "latest",
     "mocha-better-spec-reporter": "latest",
     "should": "latest"
+  },
+  "dependencies": {
+    "extend": "^3.0.0"
   }
 }
