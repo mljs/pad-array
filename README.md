@@ -17,13 +17,14 @@ This code is based in the MATLAB's code [padarray](http://www.mathworks.com/help
 Pads the `data` array given the current `options` (returns a new array).
 
 __Options__
-* padsize: Defines the number of fields that will be expanded. The default value is 1. The possible type values are:
+* __padsize__: Defines the number of fields that will be expanded. The default value is 1. The possible type values are:
   * Number: If the value is just a number it will expand in all directions with that value.
   * Array of numbers: It will expand in each direction given the values, for the array case the two values are `left and right` and for the matrix case are `left, up, right, down`
-* padval: Determine how to fill the values, if the value don't match with the next strings, the new values are going to be filled with that value. The default value is 0. The special strings are:
+* __padval__: Determine how to fill the values, if the value don't match with the next strings, the new values are going to be filled with that value. The default value is 0. The special strings are:
   * `'circular'`: Pad with circular repetition of elements within the dimension.
-  * `'replicate'`: Pad by repeating border elements of array. In this case the `padsize` shouldn't be bigger than the dimensions.
+  * `'replicate'`: Pad by repeating border elements of array.
   * `'symmetric'`: Pad array with mirror reflections of itself. In this case the `padsize` shouldn't be bigger than the dimensions.
+* __output__: Instead of creating a new array, the returned value should be in this variable.
 
 ## Examples
 

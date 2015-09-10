@@ -7,6 +7,14 @@ describe('Array test', function () {
     it('Default test', function () {
         var data = [1, 2, 3, 4];
         var model = padArray(data);
+        // model.should.equal([0, 1, 2, 3, 4, 0]);
+        model[0].should.equal(0);
+    });
+
+    it('Output option test', function () {
+        var data = [1, 2, 3, 4];
+        var model = new Array(6);
+        padArray(data, {output: model});
         model[0].should.equal(0);
     });
 
