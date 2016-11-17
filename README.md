@@ -6,11 +6,14 @@
   [![David deps][david-image]][david-url]
   [![npm download][download-image]][download-url]
 
-> Function to fill an array in Javascript
+Function to fill an array in Javascript
 
-This code is based in the MATLAB's code [padarray](http://www.mathworks.com/help/images/ref/padarray.html)
+## Installation
+
+`npm install ml-pad-array`
 
 ## [API Documentation](https://mljs.github.io/pad-array/)
+This code is based in the MATLAB's code [padarray](http://www.mathworks.com/help/images/ref/padarray.html)
 
 ## Example
 
